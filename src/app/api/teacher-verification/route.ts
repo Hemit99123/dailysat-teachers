@@ -119,6 +119,8 @@ export const POST = async (request: Request) => {
     // Send email through nodemailer
     await transporter.sendMail(mailOptions);
 
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
+
     // Return the list of school IDs the teacher is verified for
     const schoolIds = schoolsArray.map((school: any) => school.schoolId); // Extract schoolId from each school document
 
