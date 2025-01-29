@@ -1,7 +1,6 @@
 "use client"
 
 import { User } from "@/types/user";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FiArrowUpRight, FiDollarSign } from "react-icons/fi";
 
@@ -9,27 +8,32 @@ const AllStudentsView = () => {
   const [sortedUsers, setSortedUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
+  // Using dummy data instead of fetching from an API
   useEffect(() => {
-    const fetchLeaderboard = async () => {
-      try {
-        const response = await axios.get("/api/leaderboard");
-        const data = response.data;
-        setSortedUsers(data.sortedUsers); // Assuming the response contains a `sortedUsers` array
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching leaderboard data:", error);
-        setLoading(false);
-      }
-    };
+    const dummyData: User[] = [
+      {
+        _id: "1", name: "John Doe", currency: "1000",
+      },
+      {
+        _id: "2", name: "Jane Smith", currency: "1500",
+      },
+      {
+        _id: "3", name: "Sam Green", currency: "2000",
+      },
+      {
+        _id: "4", name: "Lucy Brown", currency: "1200",
+      },
+    ];
 
-    fetchLeaderboard();
+    setSortedUsers(dummyData);  // Set the dummy data directly
+    setLoading(false);  // No need to wait, data is ready
   }, []);
 
   return (
     <div className="col-span-12 p-4 rounded border border-stone-300">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="flex items-center gap-1.5 font-medium">
-          <FiDollarSign /> Leaderboard
+          Students
         </h3>
       </div>
       <table className="w-full table-auto">
