@@ -3,7 +3,7 @@
 The teacher panel allows for teachers authorized by our partnered schools to monitor students' progress.
 
 ## Demo:
-[Click here](https://www.youtube.com/watch?v=zDWumYOJQHQ)
+[Click here](https://www.youtube.com/watch?v=B10TLEEfHZA)
 
 ## Our authentication system
 
