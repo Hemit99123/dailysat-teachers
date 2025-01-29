@@ -54,11 +54,11 @@ export const getSessionInfo = async () => {
     return session
 }
 
-export const setSession = async (email: string): Promise<boolean> => {
+export const setSession = async (email: string, schools: string[]): Promise<boolean> => {
     const sessionId = await createSessionIDCookie();
 
     // creating the session into the redis database
-    await redis.set(`employee-session-${sessionId}`, {email: email });
+    await redis.set(`employee-session-${sessionId}`, {email: email, schools });
     await redis.expire(`employee-session-${sessionId}`, 604800); // the session being expired in a week (in seconds)
  
     // return true because operation was sucessfull

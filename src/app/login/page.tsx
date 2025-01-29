@@ -7,6 +7,9 @@ import checkLoginPage from "@/server-actions/prechecks/login";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
+  
+  // this keeps track of all schools that the teacher is authorized to view
+  const [schools, setSchools] = useState<string[]>()
   const [otp, setOTP] = useState("");
 
   useEffect(() => {
@@ -27,6 +30,7 @@ export const Login = () => {
         // Generate the OTP and send it via email
         alert("OTP sent to your email!");
         setEmail("")
+        setSchools(response.data.schools)
       } else {
         alert(
           "Unauthorized email. Please try again or contact DailySAT staff for assistance!"
@@ -50,8 +54,10 @@ export const Login = () => {
       // result is true meaning we are good to go to assign the session and stuff
       if (response.data.result) {
         alert("Verification successful!");
+
         // assign JWT which is needed for extra auth when assigning a employee access session
-        const token = await assignJWT(email)
+        const token = await assignJWT(email, schools)
+        
         // add session to the redis db 
         await axios.post('/api/session', {
           token

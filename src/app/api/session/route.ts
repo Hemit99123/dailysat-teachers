@@ -30,7 +30,7 @@ export const POST = async (request: Request) => {
         });
 
         // If decoding was successful, set the session
-        const result = await setSession(decoded.email as string);
+        const result = await setSession(decoded.email as string, decoded.schools as string[]);
 
         if (result) {
             message = "Session added successfully";
