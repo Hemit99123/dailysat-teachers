@@ -51,7 +51,7 @@ const Logout = () => {
                 </span>
 
                 <h3 className="mb-2 text-2xl font-bold text-gray-800">
-                    Sign out of DailySat Employment System?
+                    Sign out of DailySat Teacher System?
                 </h3>
                 <p className="text-gray-500">
                     Are you sure you would like to sign out of your account?

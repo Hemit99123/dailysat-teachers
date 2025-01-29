@@ -19,7 +19,7 @@ export const Login = () => {
 
   const handleAuthorization = async () => {
     try {
-      const response = await axios.post(`/api/employee-verification/`, {
+      const response = await axios.post(`/api/teacher-verification/`, {
         email
       });
 
@@ -70,7 +70,7 @@ export const Login = () => {
     <section className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
         <h1 className="text-2xl font-bold text-gray-800 mb-4 text-center">
-          Employee Authorization
+          Teacher Authorization
         </h1>
 
         <div className="mb-6">
