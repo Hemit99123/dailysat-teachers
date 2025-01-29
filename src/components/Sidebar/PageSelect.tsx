@@ -5,8 +5,7 @@ import { IconType } from "react-icons";
 import {
   FiHome,
 } from "react-icons/fi";
-import { AiFillQuestionCircle } from "react-icons/ai";
-import { FaMoneyBill } from "react-icons/fa";
+import { PiStudentDuotone } from "react-icons/pi";
 import { usePageStore } from "@/store/pageStore"; // Update the import path
 import { Page as PageType} from "@/types/page";
 
@@ -28,16 +27,10 @@ const PageSelect = () => {
         onClick={() => handlePageSelect("dashboard")}
       />
       <Page
-        Icon={AiFillQuestionCircle}
-        selected={page === "questions"}
-        title="Create Question"
-        onClick={() => handlePageSelect("questions")}
-      />
-      <Page
-        Icon={FaMoneyBill}
-        selected={page === "item"}
-        title="Create Item"
-        onClick={() => handlePageSelect("item")}
+        Icon={PiStudentDuotone}
+        selected={page === "student"}
+        title="Find Student Info"
+        onClick={() => handlePageSelect("student")}
       />
     </div>
   );
