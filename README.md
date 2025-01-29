@@ -1,4 +1,4 @@
-# DailySAT Teacher Panel
+# DailySAT Teachers
 
 The teacher panel allows for teachers authorized by our partnered schools to monitor students' progress.
 
