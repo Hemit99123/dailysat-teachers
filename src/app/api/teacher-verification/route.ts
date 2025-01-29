@@ -95,7 +95,7 @@ export const POST = async (request: Request) => {
         <body>
           <div class="email-container">
             <div class="header">
-              <h1>DailySAT Employment System</h1>
+              <h1>DailySAT Teachers</h1>
             </div>
             <p>Hello,</p>
             <p>Use the following One-Time Password (OTP) to complete your verification process:</p>
