@@ -13,7 +13,7 @@ const AllSchoolsView = () => {
   useEffect(() => {
     const fetchSchools = async () => {
       try {
-        const response = await fetch('/api/get-students');
+        const response = await fetch('/api/get-schools');
         
         if (!response.ok) {
           throw new Error('Failed to fetch schools');
