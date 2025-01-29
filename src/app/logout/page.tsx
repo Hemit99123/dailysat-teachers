@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import {useRouter} from "next/navigation"
 import checkLogoutPage from "@/server-actions/prechecks/logout";
 
-const Logout = () => {
+const LogoutPage = () => {
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false)
 
@@ -78,4 +78,4 @@ const Logout = () => {
     )
 }
 
-export default Logout
+export default LogoutPage
