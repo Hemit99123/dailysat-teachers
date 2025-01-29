@@ -1,4 +1,4 @@
-import {client} from "@/lib/mongo";
+import { client } from "@/lib/mongo";
 import { Db, Document } from "mongodb";
 import { redis } from "@/lib/auth/redis";
 import { transporter } from "@/lib/nodemailer";
@@ -11,7 +11,7 @@ export const POST = async (request: Request) => {
   if (!email) {
     return Response.json({
       code: 400,
-      error: "No email paramater"
+      error: "No email parameter"
     })
   }
 
@@ -20,24 +20,31 @@ export const POST = async (request: Request) => {
     await client.connect();
     const db: Db = client.db("DailySAT");
 
-    // Check if the email exists in the database
-    const docCursor = db
-      .collection("employees")
-      .aggregate([{ $match: { email } }, { $sample: { size: 1 } }]);
-    const docArray: Document[] = await docCursor.toArray();
-    const emailExists = docArray.length > 0;
+    // Find schools where the teacher's email exists in the teachers array
+    const schoolsCursor = db
+      .collection("schools")
+      .aggregate([
+        {
+          $match: { teachers: email }, // Find document where teacher's email is present
+        },
+        {
+          $project: {
+            schoolId: "$_id", // Return only the school ID (_id field)
+            _id: 0 // Exclude the _id field from the result
+          }
+        }
+      ]);
 
-    // returning (exiting) out of the function if the email is not part of the white-list of employees within the db
-
-    if (!emailExists) {
+    const schoolsArray: Document[] = await schoolsCursor.toArray();
+    if (schoolsArray.length === 0) {
       return Response.json({
         code: 403,
-        error: "Email not authorized"
-      })
+        error: "Email not authorized for any school"
+      });
     }
 
     // Generate OTP
-    const otp = await otpGenerate(12) 
+    const otp = await otpGenerate(12);
 
     // Store OTP in Redis
     await redis.set(`employee-${email}`, otp);
@@ -112,18 +119,22 @@ export const POST = async (request: Request) => {
     // Send email through nodemailer
     await transporter.sendMail(mailOptions);
 
+    // Return the list of school IDs the teacher is verified for
+    const schoolIds = schoolsArray.map((school: any) => school.schoolId); // Extract schoolId from each school document
+
     return Response.json({
       code: 200,
       message: "OTP sent successfully",
-      result: true
-    })
+      result: true,
+      schools: schoolIds, // send the list of school IDs
+    });
   } catch (error) {
     return Response.json({
       code: 500,
       error
-    })
+    });
   } finally {
     // Close the MongoDB connection
     await client.close();
   }
-}
+};
