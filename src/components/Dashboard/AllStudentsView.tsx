@@ -8,20 +8,20 @@ const AllStudentsView = () => {
   const [sortedUsers, setSortedUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  // Using dummy data instead of fetching from an API
+  // Using dummy data with actual email addresses instead of numbers
   useEffect(() => {
     const dummyData: User[] = [
       {
-        _id: "1", name: "John Doe", currency: "1000",
+        _id: "1", name: "John Doe", email: "john.doe@example.com",
       },
       {
-        _id: "2", name: "Jane Smith", currency: "1500",
+        _id: "2", name: "Jane Smith", email: "jane.smith@example.com",
       },
       {
-        _id: "3", name: "Sam Green", currency: "2000",
+        _id: "3", name: "Sam Green", email: "sam.green@example.com",
       },
       {
-        _id: "4", name: "Lucy Brown", currency: "1200",
+        _id: "4", name: "Lucy Brown", email: "lucy.brown@example.com",
       },
     ];
 
@@ -51,7 +51,7 @@ const AllStudentsView = () => {
                 key={user._id}
                 id={user._id || `#${index + 1}`}
                 name={user.name || "Unknown"}
-                money={`$${user.currency}`}
+                email={user.email || "No email"}
                 order={index + 1}
               />
             ))
@@ -74,7 +74,7 @@ const TableHead = () => {
       <tr className="text-sm font-normal text-stone-500">
         <th className="text-start p-1.5">ID</th>
         <th className="text-start p-1.5">Name</th>
-        <th className="text-start p-1.5">Money</th>
+        <th className="text-start p-1.5">Email</th>
         <th className="w-8"></th>
       </tr>
     </thead>
@@ -86,12 +86,12 @@ export default AllStudentsView;
 const TableRow = ({
   id,
   name,
-  money,
+  email,
   order,
 }: {
   id: string;
   name: string;
-  money: string;
+  email: string;
   order: number;
 }) => {
   return (
@@ -105,7 +105,7 @@ const TableRow = ({
         </a>
       </td>
       <td className="p-1.5">{name}</td>
-      <td className="p-1.5">{money}</td>
+      <td className="p-1.5">{email}</td>
     </tr>
   );
 };
