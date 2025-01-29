@@ -1,7 +1,7 @@
 import { getSessionInfo } from "@/lib/auth/employeeSession";
 import { client } from "@/lib/mongo";
 import { Session } from "@/types/session";
-import { Db } from "mongodb";
+import { Db, ObjectId } from "mongodb";
 
 export const POST = async (request: Request) => {
     const body = await request.json();
@@ -26,7 +26,7 @@ export const POST = async (request: Request) => {
 
         // Find the school by ID and check if the email exists in the students array
         const school = await db.collection("schools").findOne({
-            _id: schoolID,
+            _id: new ObjectId(schoolID),
             students: email // Check if the email is in the students array
         });
 
@@ -51,7 +51,6 @@ export const POST = async (request: Request) => {
         return Response.json({
             message: "User found",
             user,
-            school
         });
     } catch (error) {
         // Handle any errors that occur during the database operation
