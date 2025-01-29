@@ -3,7 +3,7 @@ import { client } from "@/lib/mongo";
 import { Session } from "@/types/session";
 import { Db, Document, ObjectId } from "mongodb";
 
-export const GET = async (request: Request) => {
+export const GET = async () => {
 
     const session = await getSessionInfo() as Session;
 
@@ -38,7 +38,7 @@ export const GET = async (request: Request) => {
     } catch (error) {
         return Response.json({
             code: 500,
-            error: "Internal server error",
+            error,
         });
     } finally {
         // Close the MongoDB connection

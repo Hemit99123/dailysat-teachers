@@ -1,9 +1,10 @@
 "use client"
 
+import { School } from "@/types/school";
 import React, { useEffect, useState } from "react";
 
 const AllSchoolsView = () => {
-  const [schools, setSchools] = useState<any[]>([]);  // Array to store schools and their details
+  const [schools, setSchools] = useState<School[]>([]);  // Array to store schools and their details
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);  // For handling error states
 
