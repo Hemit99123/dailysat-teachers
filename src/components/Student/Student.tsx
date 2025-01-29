@@ -7,7 +7,7 @@ const Student = () => {
   const [search, setSearch] = useState("")
 
   const handleFindStudent = () => {
-    alert("Search")
+    alert(search)
   }
   return (
     <div>
