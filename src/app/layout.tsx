@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DailySAT Admin",
-  description: "Admin portal.",
+  title: "DailySAT Teachers",
+  description: "DailySAT Teachers portal.",
 };
 
 export default function RootLayout({
