@@ -5,7 +5,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FiArrowUpRight, FiDollarSign } from "react-icons/fi";
 
-const Leaderboard = () => {
+const AllStudentsView = () => {
   const [sortedUsers, setSortedUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -77,7 +77,7 @@ const TableHead = () => {
   );
 };
 
-export default Leaderboard;
+export default AllStudentsView;
 
 const TableRow = ({
   id,
