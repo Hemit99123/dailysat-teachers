@@ -17,6 +17,8 @@
 /.next/
 /out/
 
+/.husky/_
+
 # production
 /build
 
