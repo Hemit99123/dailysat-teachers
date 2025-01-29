@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { assignJWT } from "@/server-actions/assignJWT";
 import checkLoginPage from "@/server-actions/prechecks/login";
 
-export const LoginPage = () => {
+const LoginPage = () => {
   const [email, setEmail] = useState("");
   
   // this keeps track of all schools that the teacher is authorized to view
