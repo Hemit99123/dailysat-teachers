@@ -2,7 +2,7 @@
 
 import { User } from "@/types/user";
 import React, { useEffect, useState } from "react";
-import { FiArrowUpRight, FiDollarSign } from "react-icons/fi";
+import { FiArrowUpRight } from "react-icons/fi";
 
 const AllStudentsView = () => {
   const [sortedUsers, setSortedUsers] = useState<User[]>([]);
