@@ -45,7 +45,7 @@ const AllSchoolsView = () => {
   };
 
   return (
-    <div className="col-span-12 p-6 bg-gray-50 min-h-screen">
+    <div className="col-span-12 p-6 min-h-screen">
       <div className="mb-6 text-center">
         <h3 className="font-bold text-3xl text-gray-800">
           Schools & Students
