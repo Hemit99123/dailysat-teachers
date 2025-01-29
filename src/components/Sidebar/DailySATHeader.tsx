@@ -10,7 +10,7 @@ const DailySATHeader = () => {
           className="size-8 rounded shrink-0"
         />
         <div className="text-start">
-          <span className="text-sm font-bold block">DailySAT Admin</span>
+          <span className="text-sm font-bold block">DailySAT Teachers</span>
           <span className="text-xs block text-stone-500">Welcome!</span>
         </div>
       </button>
