@@ -73,8 +73,7 @@ const LoginPage = () => {
         alert("Incorrect OTP. Please try again.");
       }
     } catch (error) {
-      console.error("Error during verification:", error);
-      alert("An error occurred. Please try again.");
+      alert("An error occurred:"+ error);
     }
   };
 
