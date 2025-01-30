@@ -46,6 +46,12 @@ const LoginPage = () => {
     try {
       const email = prompt("Enter email please")
 
+      // if the school state is not populated, fix that...
+      
+      if (!schools) {
+        throw new Error("Information not given, restart login process")
+      }
+      
       // Here we see if email actually belongs to the user because the otp was sent to their email
       const response = await axios.get(`/api/otp-verify`, {
         params: { passwordAttempt: otp, email },
