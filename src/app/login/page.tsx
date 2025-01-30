@@ -32,9 +32,7 @@ const LoginPage = () => {
         setEmail("")
         setSchools(response.data.schools)
       } else {
-        alert(
-          "Unauthorized email. Please try again or contact DailySAT staff for assistance!"
-        );
+        throw new Error("Unauthorized email. Please try again or contact DailySAT staff for assistance!");
       }
     } catch (error) {
       console.error("Error during authorization:", error);
