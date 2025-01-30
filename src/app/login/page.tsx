@@ -70,7 +70,7 @@ const LoginPage = () => {
         })
         setOTP("")
       } else {
-        alert("Incorrect OTP. Please try again.");
+        throw new Error("Incorrect OTP. Please try again.");
       }
     } catch (error) {
       alert("An error occurred:"+ error);
