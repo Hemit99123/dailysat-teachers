@@ -35,8 +35,7 @@ const LoginPage = () => {
         throw new Error("Unauthorized email. Please try again or contact DailySAT staff for assistance!");
       }
     } catch (error) {
-      console.error("Error during authorization:", error);
-      alert("An error occurred. Please try again.");
+      alert("An error occurred."+ error);
     }
   };
 
